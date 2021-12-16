@@ -9,11 +9,11 @@ import torch.nn as nn
 
 
 # super parameters
-batch_size = 64
+batch_size = 32
 lr = 0.03
 epoches = 10
 
-train_dataset = TrainDataSet("dataset/train.csv")
+train_dataset = TrainDataSet("datas/train.csv")
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
 
@@ -33,7 +33,9 @@ for epoch in range(epoches):
     for data in train_dataloader:
         x, label = data
         y = model(x)
-
+        print(label)
+        print(label.shape)
+        print(y.shape)
         loss = criterion(y, label)
         optimizer.zero_grad()
         loss.backward()
